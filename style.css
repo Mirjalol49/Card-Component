@@ -1,220 +1,190 @@
-/* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap");
+:root {
+  --clr-primary-400: hsl(158, 36%, 37%);
+  --clr-primary-500: hsl(158, 36%, 20%);
+  --clr-secondary-200: hsl(30, 38%, 92%);
 
-* {
-  box-sizing: border-box;
+  --clr-neutral-900: hsl(212, 21%, 14%);
+  --clr-neutral-400: hsl(228, 12%, 48%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+
+  --ff-accent: "Fraunces", serif;
+  --ff-base: "Montserrat", sans-serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
 }
-/* GENERAL */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
-}
-html {
-  height: 100%;
   box-sizing: border-box;
 }
-img {
-  display: block;
-  height: auto;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+/*
+  2. Remove default margin
+*/
+* {
   margin: 0;
-  padding: 0;
-  font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 14px;
-  background-color: #f2ebe3;
-  line-height: 1.5;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-
-/* VISUALLY-HIDDEN */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
-
-/* CONTAINER */
-.container {
-  width: 100%;
-  max-width: 1470px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 20px;
-  padding-left: 20px;
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 h1,
 h2,
-h3,
-h4 {
-  margin: 0;
-  overflow-wrap: break-word;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-/* STICKY-FOOTER */
-.main {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Card Wrapper Start */
-
-.card-wrapper {
-  display: flex;
-}
-
-.card-wrapper__img {
-  border-radius: 10px 0 0 10px;
-}
-
-.card-wrapper__mob-img {
-  border-radius: 10px 0 0 10px;
-  width: 100%;
-  height: auto;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Code-in Wrapper Start */
-.card-in-wrapper {
-  background-color: #fff;
-  border-radius: 0 10px 10px 0;
-  padding: 50px;
-}
-.card-in-wrapper__title {
-  color: #6c7289;
-  letter-spacing: 5px;
-  font-weight: 500;
-  margin-bottom: 35px;
-}
-
-.card-in-wrapper__subtitle {
-  width: 100%;
-  max-width: 450px;
-  font-family: "Fraunces", sans-serif;
-  font-size: 65px;
-  color: #1c232b;
+h3 {
   line-height: 1;
-  margin-bottom: 50px;
 }
 
-.card-in-wrapper__text {
-  width: 100%;
-  max-width: 500px;
-  color: #6c7289;
-  font-size: 30px;
-  margin-bottom: 50px;
+/* general styling */
+
+body {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  font-size: 0.875rem;
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-secondary-200);
+
+  /* for this project only */
+  display: grid;
+  place-content: center;
+  margin: 1rem;
 }
 
-.card-in-wrapper__price {
+/* utilities */
+
+.flex-group {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 50px;
 }
 
-.price-active {
-  font-family: "Fraunces", sans-serif;
-  font-size: 65px;
-  color: #3c8067;
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.price-off {
-  font-size: 30px;
-  color: #6c7289;
-  margin-left: 30px;
-}
-
-.card-in-wrapper__btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #3c8067;
-  color: #fff;
-  padding: 30px;
-  border: 0;
-  border-radius: 10px;
-  font-size: 30px;
-  font-weight: 600;
-  transition: 0.3s all;
-}
-
-.card-in-wrapper__btn:hover {
-  opacity: 0.9;
+/* button */
+.button {
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.75em 1.5em;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+  font-size: 0.925rem;
 }
 
-.card-in-wrapper__btn:active {
-  transform: scale(0.98);
+.button[data-icon="shopping-cart"]::before {
+  content: "";
+  background-image: url("images/icon-cart.svg");
+  width: 15px;
+  height: 16px;
 }
 
-.card-in-wrapper__cart {
-  margin-right: 25px;
+.button:is(:hover, :focus) {
+  background-color: var(--clr-primary-500);
 }
 
-/* Code-in Wrapper End */
+/* product styles */
+.product {
+  --content-padding: 1.5rem;
+  --content-spacing: 1rem;
 
-/* Card Wrapper End */
+  display: grid;
+  background-color: var(--clr-neutral-100);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-width: 600px;
+}
 
-/* Mobile version adaptive */
-
-@media only screen and (max-width: 750px) {
-  .card-wrapper__img {
-    display: none;
-  }
-  .card-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hidden {
-    display: block;
+@media (min-width: 600px) {
+  .product {
+    --content-padding: 2rem;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media only screen and (max-width: 375px) {
-  .card-in-wrapper__subtitle {
-    font-size: 45px;
-    color: #1c232b;
-    line-height: 1;
-    margin-bottom: 50px;
-  }
+.product__content {
+  display: grid;
+  gap: var(--content-spacing);
+  padding: var(--content-padding);
+}
 
-  .card-in-wrapper__text {
-    font-size: 15px;
-  }
+.product__category {
+  font-size: 0.8125rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
 
-  .price-active {
-    font-size: 45px;
-  }
+.product__title {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-neutral-900);
+}
 
-  card-in-wrapper__btn {
-    font-size: 15px;
-  }
-
-  .card-in-wrapper__cart {
-    width: 35px;
-    height: 36px;
-  }
+.product__price {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-primary-400);
 }
